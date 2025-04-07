@@ -1,3 +1,7 @@
+require 'date'
+require './lib/facility'
+require './lib/vehicle'
+
 class Facility
   attr_reader :name, :address, :phone, :services
 
@@ -15,7 +19,7 @@ class Facility
 
   def register_vehicle(vehicle)
     vehicle.registration_date = Date.today
-    
+
     if vehicle.antique?
       vehicle.plate_type = :antique
     elsif vehicle.electric_vehicle?
@@ -24,3 +28,4 @@ class Facility
       vehicle.plate_type = :regular
     end
   end
+end

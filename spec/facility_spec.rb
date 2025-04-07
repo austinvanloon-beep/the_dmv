@@ -23,4 +23,31 @@ RSpec.describe Facility do
       expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration'])
     end
   end
+  describe '#register_vehicle' do
+    it 'can register a vehicle and set plate type based on engine type' do
+      @facility.add_service('Vehicle Registration')
+      
+      @facility.register_vehicle(@cruz)
+      expect(@cruz.registration_date).to_not be_nil
+      expect(@cruz.plate_type).to eq(:regular)
+      
+      @facility.register_vehicle(@camaro)
+      expect(@camaro.registration_date).to_not be_nil
+      expect(@camaro.plate_type).to eq(:antique)
+
+      @facility.register_vehicle(@bolt)
+      expect(@bolt.registration_date).to_not be_nil
+      expect(@bolt.plate_type).to eq(:ev)
+    end
+
+    it 'tracks registered vehicles' do
+      @facility.add_service('Vehicle Registration')
+      
+      @facility.register_vehicle(@cruz)
+      expect(@facility.registered_vehicles).to include(@cruz)
+
+      @facility.register_vehicle(@camaro)
+      expect(@facility.registered_vehicles).to include(@camaro)
+    end
+  end
 end
