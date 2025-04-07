@@ -1,4 +1,10 @@
-RSpec.describe Registrant do
+require 'spec_helper'
+require './lib/registrant'
 
-    expect(Registrant).to be_a(Class)
+RSpec.describe Registrant do
+    describe '#initialize' do
+    it 'exists' do
+        registrant = Registrant.new("Bruce", 18, true)
+    expect(registrant).to be_a(Registrant)
+    end
 end
