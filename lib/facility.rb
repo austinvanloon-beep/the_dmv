@@ -3,7 +3,8 @@ require './lib/facility'
 require './lib/vehicle'
 
 class Facility
-  attr_reader :name, :address, :phone, :services, :registered_vehicles, :collected_fees
+  attr_reader :name, :address, :phone, :services, :registered_vehicles
+  attr_accessor :collected_fees
 
   def initialize(data)
     @name = data[:name]

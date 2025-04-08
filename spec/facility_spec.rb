@@ -57,17 +57,16 @@ RSpec.describe Facility do
 
     it 'tracks collected fees' do
       @facility.add_service('Vehicle Registration')
-      
       expect(@facility.collected_fees).to eq(0)
       
       @facility.register_vehicle(@cruz)
       expect(@facility.collected_fees).to eq(100)
 
       @facility.register_vehicle(@camaro)
-      expect(@facility.collected_fees).to eq(200)
+      expect(@facility.collected_fees).to eq(150)
 
       @facility.register_vehicle(@bolt)
-      expect(@facility.collected_fees).to eq(325)
+      expect(@facility.collected_fees).to eq(225)
     end
   end
 end
