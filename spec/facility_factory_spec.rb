@@ -26,3 +26,12 @@ RSpec.describe FacilityFactory do
     expect(ny_facilities).to be_an(Array)
     expect(ny_facilities.first).to be_a(Facility)
   end
+
+  it 'can create facilities from MO data' do
+    mo_data = DmvDataService.new.mo_dmv_office_locations
+    mo_facilities = @factory.create_facilities(mo_data)
+
+    expect(mo_facilities).to be_an(Array)
+    expect(mo_facilities.first).to be_a(Facility)
+  end
+end
